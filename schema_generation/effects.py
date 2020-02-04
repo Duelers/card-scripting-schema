@@ -4,9 +4,7 @@ from typing import Union
 import pydantic
 from pydantic import BaseModel
 
-import events
-import operators
-import properties
+from schema_generation import properties, operators, events
 
 
 class InstantaneousEffect(BaseModel):

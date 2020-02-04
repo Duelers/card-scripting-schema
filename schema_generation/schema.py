@@ -1,8 +1,6 @@
 from pydantic import BaseModel
 
-import effects
-import events
-import properties
+from schema_generation import properties, effects, events
 
 
 class TriggeredEffect(BaseModel):
