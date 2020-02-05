@@ -1,7 +1,7 @@
-import schema
+import effects
 
 if __name__ == '__main__':
-    schema_root = schema.TriggeredEffect  # In future change this as the scope increases.
+    schema_root = effects.TriggeredEffect  # In future change this as the scope increases.
     schema_json = schema_root.schema_json(indent=4)
     file_name = 'duelers_schema'
     version = '0_1'

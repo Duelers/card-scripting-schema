@@ -4,21 +4,17 @@ from typing import Union
 import pydantic
 from pydantic import BaseModel
 
-from schema_generation import properties, operators, events
+import properties
+import operators
+import events
 
-
-class InstantaneousEffect(BaseModel):
-    """An effect cannot have a duration, such as killing a minion."""
-    pass
+InstantaneousEffect = Union[None]  # An effect cannot have a duration, such as killing a minion.
 
 
 class DurationEffectModel(BaseModel):
     """An continuous effect."""
     end_when_this_leaves_play: bool = False
     until: typing.Optional[events.Event] = None
-
-    class Config:
-        arbitrary_types_allowed = True
 
 
 class ChangeProperty(DurationEffectModel):
@@ -31,3 +27,8 @@ class ChangeProperty(DurationEffectModel):
 
 DurationEffect = Union[ChangeProperty]
 Effect = Union[InstantaneousEffect, DurationEffect]
+
+
+class TriggeredEffect(BaseModel):
+    trigger: events.Event
+    effect: Effect
