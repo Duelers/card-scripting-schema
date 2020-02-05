@@ -1,11 +1,16 @@
-from typing import Union
+from typing import Union, Literal
 
-from pydantic import BaseModel
+import pydantic
 
-
-class Summon(BaseModel):
-    """On Play"""
-    pass  # TODO Clarify this. How to say "when this is played" vs "when a thing is played"?
+summon = 'summon'  # TODO Clarify this. How to say "when this is played" vs "when a thing is played"?
 
 
-Event = Union[Summon]  # A thing that happens, such as a turn ending.
+class EndOfNTurns(pydantic.BaseModel):
+    name: str = pydantic.Field('end_of_#_turns', const=True)
+    num_turns: int = 0
+
+
+Event = Union[
+    Literal[summon],
+    EndOfNTurns
+]  # A thing that happens, such as a turn ending.

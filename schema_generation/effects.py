@@ -8,7 +8,8 @@ import properties
 import operators
 import events
 
-InstantaneousEffect = Union[None]  # An effect cannot have a duration, such as killing a minion.
+InstantaneousEffect = Union[typing.Literal["UNIMPLEMENTED"]]
+# An effect cannot have a duration, such as killing a minion.
 
 
 class DurationEffectModel(BaseModel):
