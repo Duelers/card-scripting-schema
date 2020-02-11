@@ -1,0 +1,31 @@
+{
+  "card": {
+    "name": "Aegis Barrier",
+    "cost": 1,
+    "effects": [
+      {
+        "name": "add_ability",
+        "description": "Choose a friendly minion. It can't be targeted by enemy spells.",
+        "to": {
+          "name": "choose_cards",
+          "type": "minion",
+          "owner": "you"
+        },
+        "ability": {
+          "name": "triggered_effect",
+          "description": "This cannot be targeted by enemy spells.",
+          "cancel": true,
+          "trigger": {
+            "name": "spell_cast",
+            "target": "this",
+            "caster": "opponent"
+          }
+        }
+      },
+      {
+        "name": "draw_cards",
+        "description": "Draw a card."
+      }
+    ]
+  }
+}

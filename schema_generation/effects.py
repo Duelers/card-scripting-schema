@@ -1,35 +1,58 @@
+from __future__ import annotations
+
 import typing
 from typing import Union
 
 import pydantic
-from pydantic import BaseModel
+
+import objects
+import players
+import base
 
 import properties
 import operators
 import events
 
-InstantaneousEffect = Union[typing.Literal["UNIMPLEMENTED"]]
+
+class EffectModel(base.BaseModel):
+    description: str = None
+
+
+class DrawCards(EffectModel):
+    """Add cards from the player's deck to their hand."""
+    name: typing.Literal['draw_cards']
+    player: players.Player = players.you
+    num_cards: int = 1
+
+
 # An effect cannot have a duration, such as killing a minion.
+InstantaneousEffect = Union[DrawCards]
 
 
-class DurationEffectModel(BaseModel):
+class DurationEffectModel(EffectModel):  # model in the name indicates it's abstract.
     """An continuous effect."""
     end_when_this_leaves_play: bool = False
     until: typing.Optional[events.Event] = None
 
 
 class ChangeProperty(DurationEffectModel):
-    name: str = pydantic.Field('change_property', const=True)
-    # property_owner: any = This()  # Todo set type
+    """Modify a property of an object."""
+    name: typing.Literal['change_property']
+    property_owner: objects.Object = "this"
     property: properties.Property  # todo Only allow properties property_owner has? Or just ignore?
     operator: operators.NumberOperator
     by_value: int
 
 
-DurationEffect = Union[ChangeProperty]
+class AddAbility(DurationEffectModel):
+    name: typing.Literal['add_ability']
+    to: objects.Object = objects.this
+    ability: abilities.Ability
+
+
+DurationEffect = Union[ChangeProperty, AddAbility]
 Effect = Union[InstantaneousEffect, DurationEffect]
 
+import abilities
 
-class TriggeredEffect(BaseModel):
-    trigger: events.Event
-    effect: Effect
+AddAbility.update_forward_refs()

@@ -1,0 +1,22 @@
+{
+  "card": {
+    "name": "Primus Fist",
+    "attack": 2,
+    "max_health": 3,
+    "cost": 2,
+    "abilities": [
+      {
+        "name": "triggered_effect",
+        "description": "Opening Gambit: Give itself +2 Attack.",
+        "trigger": "summon",
+        "effect": {
+          "name": "change_property",
+          "property_owner": "this",
+          "property": "attack",
+          "operator": "+",
+          "by_value": 2
+        }
+      }
+    ]
+  }
+}
