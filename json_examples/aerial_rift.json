@@ -1,7 +1,7 @@
 {
   "card": {
     "name": "Aerial Rift",
-    "cost": 0,
+    "cost": 1,
     "effects": [
       {
         "name": "add_ability",

@@ -6,10 +6,10 @@
     "cost": 2,
     "abilities": [
       {
-        "name": "triggered_effect",
+        "name": "triggered_effects",
         "description": "Opening Gambit: Give a nearby friendly minion +2 Attack this turn.",
         "trigger": "summon",
-        "effect": {
+        "effects": {
           "name": "change_property",
           "property_owner": {
             "name": "choose_cards",

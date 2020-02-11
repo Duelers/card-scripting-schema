@@ -25,8 +25,15 @@ class DrawCards(EffectModel):
     num_cards: int = 1
 
 
+class SetVar(EffectModel):
+    """Define a scripting variables to the given value."""
+    name: typing.Literal['set_var']
+    var: str
+    value: typing.Any
+
+
 # An effect cannot have a duration, such as killing a minion.
-InstantaneousEffect = Union[DrawCards]
+InstantaneousEffect = Union[DrawCards, SetVar]
 
 
 class DurationEffectModel(EffectModel):  # model in the name indicates it's abstract.

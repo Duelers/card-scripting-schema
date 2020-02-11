@@ -14,16 +14,21 @@ class AbilityModel(BaseModel):
     description: str = None
 
 
-class TriggeredEffect(AbilityModel):
-    name: typing.Literal['triggered_effect']
+class TriggeredEffects(AbilityModel):
+    name: typing.Literal['triggered_effects']
     trigger: events.Event
-    effect: typing.Optional[effects.Effect] = None
+    effects: typing.Optional[
+        typing.Union[
+            effect.Effect,
+            typing.List[effect.Effect]
+        ]
+    ] = None
     cancel: bool = False
 
 
-Ability = typing.Union[TriggeredEffect,
+Ability = typing.Union[TriggeredEffects,
                        typing.Literal[airdrop]]
 
-import effects
+import effect
 
-TriggeredEffect.update_forward_refs()
+TriggeredEffects.update_forward_refs()

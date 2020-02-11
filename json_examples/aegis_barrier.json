@@ -8,11 +8,11 @@
         "description": "Choose a friendly minion. It can't be targeted by enemy spells.",
         "to": {
           "name": "choose_cards",
-          "type": "minion",
+          "types": "minion",
           "owner": "you"
         },
         "ability": {
-          "name": "triggered_effect",
+          "name": "triggered_effects",
           "description": "This cannot be targeted by enemy spells.",
           "cancel": true,
           "trigger": {

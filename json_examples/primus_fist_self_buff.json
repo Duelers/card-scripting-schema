@@ -6,10 +6,10 @@
     "cost": 2,
     "abilities": [
       {
-        "name": "triggered_effect",
+        "name": "triggered_effects",
         "description": "Opening Gambit: Give itself +2 Attack.",
         "trigger": "summon",
-        "effect": {
+        "effects": {
           "name": "change_property",
           "property_owner": "this",
           "property": "attack",
