@@ -1,6 +1,7 @@
 {
   "card": {
     "name": "Aegis Barrier",
+    "type": "spell",
     "cost": 1,
     "effects": [
       {

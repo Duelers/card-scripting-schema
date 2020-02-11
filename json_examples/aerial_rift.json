@@ -1,6 +1,7 @@
 {
   "card": {
     "name": "Aerial Rift",
+    "type": "spell",
     "cost": 1,
     "effects": [
       {

@@ -1,4 +1,6 @@
 import typing
+
+import card_types
 import factions
 from base import BaseModel
 import abilities as _abilities
@@ -12,6 +14,7 @@ class CardModel(BaseModel):
 
 
 class MinionCard(CardModel):
+    type: typing.Literal[card_types.minion]
     attack: int
     max_health: int
     tribes: typing.List[str] = []
@@ -22,10 +25,19 @@ class MinionCard(CardModel):
 
 
 class SpellCard(CardModel):
+    type: typing.Literal[card_types.spell]
     effects: typing.Union[
         _effects.Effect,
         typing.List[_effects.Effect]
     ]
 
 
-Card = typing.Union[SpellCard, MinionCard]
+class ArifactCard(CardModel):
+    type: typing.Literal[card_types.artifact]
+    abilities: typing.Union[
+        _abilities.Ability,
+        typing.List[_abilities.Ability]
+    ]
+
+
+Card = typing.Union[SpellCard, MinionCard, ArifactCard]

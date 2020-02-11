@@ -1,10 +1,8 @@
 {
   "card": {
-    "name": "Arclyte Sentinel",
-    "type": "minion",
-    "attack": 2,
-    "max_health": 4,
-    "cost": 3,
+    "name": "Arclyte Regalia",
+    "type": "artifact",
+    "cost": 4,
     "abilities": [
       {
         "name": "triggered_effects",

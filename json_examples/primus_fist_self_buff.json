@@ -1,6 +1,7 @@
 {
   "card": {
     "name": "Primus Fist",
+    "type": "minion",
     "attack": 2,
     "max_health": 3,
     "cost": 2,
