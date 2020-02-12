@@ -1,25 +1,23 @@
 {
-  "card": {
-    "name": "Aerial Rift",
-    "type": "spell",
-    "cost": 1,
-    "effects": [
-      {
-        "name": "add_ability",
-        "description": "Give your minions Airdrop this turn.",
-        "to": {
-          "name": "all_cards",
-          "from_zones": [
-            "hand"
-          ],
-          "owner": "you"
-        },
-        "ability": "airdrop"
+  "name": "Aerial Rift",
+  "type": "spell",
+  "cost": 1,
+  "effects": [
+    {
+      "name": "add_ability",
+      "description": "Give your minions Airdrop this turn.",
+      "to": {
+        "name": "all_cards",
+        "from_zones": [
+          "hand"
+        ],
+        "owner": "you"
       },
-      {
-        "name": "draw_cards",
-        "description": "Draw a card."
-      }
-    ]
-  }
+      "ability": "airdrop"
+    },
+    {
+      "name": "draw_cards",
+      "description": "Draw a card."
+    }
+  ]
 }

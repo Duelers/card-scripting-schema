@@ -1,46 +1,45 @@
 {
-  "card": {
-    "name": "Arclyte Sentinel",
-    "type": "minion",
-    "attack": 2,
-    "max_health": 4,
-    "cost": 3,
-    "abilities": [
-      {
-        "name": "triggered_effects",
-        "description": "Opening Gambit: Give ANY nearby minion +2 Attack, but -2 Health",
-        "trigger": "summon",
-        "effects": [
-          {
-            "name": "set_var_object",
-            "var": "target",
-            "value": {
-              "name": "choose_cards",
-              "owner": "you"
-            }
-          },
-          {
-            "name": "change_property",
-            "property_owner": {
-              "name": "get_var_object",
-              "var": "target"
-            },
-            "property": "attack",
-            "operator": "+",
-            "by_value": 2
-          },
-          {
-            "name": "change_property",
-            "property_owner": {
-              "name": "get_var_object",
-              "var": "target"
-            },
-            "property": "max_health",
-            "operator": "-",
-            "by_value": 2
+  "name": "Arclyte Sentinel",
+  "type": "minion",
+  "attack": 2,
+  "max_health": 4,
+  "cost": 3,
+  "abilities": [
+    {
+      "name": "triggered_effects",
+      "description": "Opening Gambit: Give ANY nearby minion +2 Attack, but -2 Health",
+      "trigger": "summon",
+      "effects": [
+        {
+          "name": "set_var_object",
+          "var": "target",
+          "value": {
+            "name": "choose_cards",
+            "owner": "you"
           }
-        ]
-      }
-    ]
-  }
+        },
+        {
+          "name": "change_property",
+          "property_owner": {
+            "name": "get_var_object",
+            "var": "target"
+          },
+          "property": "attack",
+          "operator": "+",
+          "by_value": 2
+        },
+        {
+          "name": "change_property",
+          "property_owner": {
+            "name": "get_var_object",
+            "var": "target"
+          },
+          "property": "max_health",
+          "operator": "-",
+          "by_value": 2
+        }
+      ]
+    }
+  ]
 }
+

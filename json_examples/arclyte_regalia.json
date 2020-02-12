@@ -1,64 +1,63 @@
 {
-  "card": {
-    "name": "Arclyte Regalia",
-    "type": "artifact",
-    "cost": 4,
-    "abilities": [
-      {
-        "name": "continuous_effect",
-        "description": "Your General gains +2 Attack.",
-        "effect": {
-          "name": "change_property",
-          "property_owner": "your_general",
-          "property": "attack",
-          "by_value": 2
+  "name": "Arclyte Regalia",
+  "type": "artifact",
+  "cost": 4,
+  "abilities": [
+    {
+      "name": "continuous_effect",
+      "description": "Your General gains +2 Attack.",
+      "effect": {
+        "name": "change_property",
+        "property_owner": "your_general",
+        "property": "attack",
+        "by_value": 2
+      }
+    },
+    {
+      "name": "triggered_effects",
+      "description": "The first time your General takes damage each turn, prevent 2 of it.",
+      "trigger": {
+        "name": "conditional_trigger",
+        "trigger": {
+          "name": "damage_dealt",
+          "target": "your_general"
+        },
+        "conditions": {
+          "name": "comparison",
+          "left": {
+            "name": "get_var_number",
+            "var": "ready",
+            "initial": 1
+          },
+          "right": 1
         }
       },
-      {
-        "name": "triggered_effects",
-        "description": "The first time your General takes damage each turn, prevent 2 of it.",
-        "trigger": {
-          "name": "conditional_trigger",
-          "trigger": {
-            "name": "damage_dealt",
-            "target": "your_general"
-          },
-          "conditions": {
-            "name": "comparison",
-            "left": {
-              "name": "get_var_number",
-              "var": "ready",
-              "initial": 1
-            },
-            "right": 1
-          }
-        },
-        "effects": [
-          {
-            "name": "set_var_number",
-            "var": "ready",
-            "value": 0
-          },
-          {
-            "name": "change_property",
-            "property_owner": "trigger",
-            "property": "damage",
-            "operator": "-",
-            "by_value": 2
-          }
-        ]
-      },
-      {
-        "name": "triggered_effects",
-        "trigger": {
-          "name": "start_of_turn"
-        },
-        "effects": {
+      "effects": [
+        {
           "name": "set_var_number",
           "var": "ready",
-          "value": 1
+          "value": 0
+        },
+        {
+          "name": "change_property",
+          "property_owner": "trigger",
+          "property": "damage",
+          "operator": "-",
+          "by_value": 2
         }
+      ]
+    },
+    {
+      "name": "triggered_effects",
+      "trigger": {
+        "name": "start_of_turn"
+      },
+      "effects": {
+        "name": "set_var_number",
+        "var": "ready",
+        "value": 1
       }
-    ]
-  }
+    }
+  ]
 }
+

@@ -1,5 +1,7 @@
 import typing
 
+import pydantic
+
 import card_types
 import factions
 import base
@@ -41,3 +43,7 @@ class ArifactCard(CardModel):
 
 
 Card = typing.Union[SpellCard, MinionCard, ArifactCard]
+
+
+class CardRoot(base.BaseModel):
+    __root__: typing.Union[Card]

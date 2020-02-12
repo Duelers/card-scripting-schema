@@ -1,4 +1,7 @@
 import typing
+
+import pydantic
+
 import base
 import objects
 
@@ -42,6 +45,8 @@ class GetUnitProperty(GetPropertyModel):
     type: typing.Literal['unit'] = 'unit'
     # todo property owner must be a unit or unit selector
     property: UnitProperty
+
+# TestGetProperty = pydantic.create_model()
 
 
 Number = typing.Union[GetProperty, GetUnitProperty, GetVarNumber, int]

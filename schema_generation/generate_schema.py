@@ -8,7 +8,7 @@ class CardContainer(base.BaseModel):
 
 
 if __name__ == '__main__':
-    schema_root = CardContainer  # todo want to remove the container aspect and just use the union of cards.
+    schema_root = cards.CardRoot  # todo want to remove the container aspect and just use the union of cards.
     schema_json = schema_root.schema_json(indent=2)
     file_name = 'duelers_schema'
     version = '0_1'
