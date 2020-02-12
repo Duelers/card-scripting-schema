@@ -12,7 +12,7 @@
         "trigger": "summon",
         "effects": [
           {
-            "name": "set_var",
+            "name": "set_var_object",
             "var": "target",
             "value": {
               "name": "choose_cards",
@@ -22,7 +22,7 @@
           {
             "name": "change_property",
             "property_owner": {
-              "name": "get_var",
+              "name": "get_var_object",
               "var": "target"
             },
             "property": "attack",
@@ -32,7 +32,7 @@
           {
             "name": "change_property",
             "property_owner": {
-              "name": "get_var",
+              "name": "get_var_object",
               "var": "target"
             },
             "property": "max_health",

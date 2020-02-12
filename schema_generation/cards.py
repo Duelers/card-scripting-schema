@@ -2,12 +2,12 @@ import typing
 
 import card_types
 import factions
-from base import BaseModel
+import base
 import abilities as _abilities
-import effect as _effects
+import effects as _effects
 
 
-class CardModel(BaseModel):
+class CardModel(base.BaseModel):
     name: str
     cost: int
     faction: factions.Faction = factions.neutral

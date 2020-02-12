@@ -48,7 +48,7 @@ class DurationEffectModel(BaseModel): # Ending its name with 'Model' means its a
 class ChangeProperty(DurationEffectModel): #This inherits the fields in DurationEffectModel
     name: str = pydantic.Field('change_property', const=True)
     # property_owner: ? = 'this'  # Still working on a good way to type this. 
-    property: properties.Property  # todo Only allow properties property_owner has? Or just ignore?
+    property: properties.UnitProperty  # todo Only allow properties property_owner has? Or just ignore?
     operator: operators.NumberOperator
     by_value: int
 

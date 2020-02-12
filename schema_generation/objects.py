@@ -1,12 +1,14 @@
 import typing
 
 import card_types
+import generals
 import players
 import base
 
 import zones
 
 this = "this"
+trigger = "trigger"  # The event which causes a triggered effect
 
 
 class CardSelectionModel(base.BaseModel):
@@ -40,14 +42,16 @@ class AllCards(CardSelectionModel):
     owner: typing.Optional[players.Player] = None
 
 
-class GetVar(base.BaseModel):
-    name: typing.Literal['get_var']
+class GetVarObject(base.BaseModel):
+    name: typing.Literal['get_var_object']
     var: str
 
 
 Object = typing.Union[
     typing.Literal[this],
+    typing.Literal[trigger],
     ChooseCards,
     AllCards,
-    GetVar
+    GetVarObject,
+    generals.Generals
 ]

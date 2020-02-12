@@ -1,19 +1,31 @@
+from __future__ import annotations
+
 from typing import Union, Literal
 
 import typing
 
 import base
-import pydantic
+import comparison
 
 import objects
 import players
 
-summon = 'summon'  # TODO Clarify this. How to say "when this is played" vs "when a thing is played"?
+summon = 'summon'  # Opening gambit. When this is played.
 
 
-class EndOfNTurns(base.BaseModel):
-    name: typing.Literal['end_of_#_turns']
+class EndOfNTurnsFromNow(base.BaseModel):
+    name: typing.Literal['end_of_#_turns_from_now']
     num_turns: int = 0
+
+
+class StartOfTurn(base.BaseModel):
+    name: typing.Literal['start_of_turn']
+    turn_owner: typing.Optional[players.Player] = None
+
+
+class EndOfTurn(base.BaseModel):
+    name: typing.Literal['end_of_turn']
+    turn_owner: typing.Optional[players.Player] = None
 
 
 class SpellCast(base.BaseModel):
@@ -22,8 +34,31 @@ class SpellCast(base.BaseModel):
     caster: typing.Optional[players.Player] = None
 
 
+class DamageDealt(base.BaseModel):
+    name: typing.Literal['damage_dealt']
+    attacker: typing.Optional[objects.Object] = None
+    target: typing.Optional[objects.Object] = None
+    minimum: typing.Optional[int] = None
+    maximum: typing.Optional[int] = None
+
+
+# Requires Event
+class ConditionalTrigger(base.BaseModel):
+    name: typing.Literal['conditional_trigger']
+    trigger: Event
+    conditions: typing.Union[comparison.Comparison,
+                             typing.List[comparison.Comparison]
+    ]
+
+
 Event = Union[
     Literal[summon],
-    EndOfNTurns,
+    EndOfNTurnsFromNow,
+    StartOfTurn,
+    EndOfTurn,
     SpellCast,
+    DamageDealt,
+    ConditionalTrigger
 ]  # A thing that happens, such as a turn ending.
+
+ConditionalTrigger.update_forward_refs()

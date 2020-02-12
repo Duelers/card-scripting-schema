@@ -20,7 +20,7 @@
           "operator": "+",
           "by_value": 2,
           "until": {
-            "name": "end_of_#_turns",
+            "name": "end_of_#_turns_from_now",
             "num_turns": 1
           }
         }
