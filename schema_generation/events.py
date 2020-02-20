@@ -11,7 +11,7 @@ import objects
 import players
 
 summon = 'summon'  # Opening gambit. When this is played.
-
+death = 'death' # Dying wish
 
 class EndOfNTurnsFromNow(base.BaseModel):
     name: typing.Literal['end_of_#_turns_from_now']
@@ -30,14 +30,14 @@ class EndOfTurn(base.BaseModel):
 
 class SpellCast(base.BaseModel):
     name: typing.Literal['spell_cast']
-    target: typing.Optional[objects.Object] = None
+    target: typing.Optional[objects.Objects] = None
     caster: typing.Optional[players.Player] = None
 
 
 class DamageDealt(base.BaseModel):
     name: typing.Literal['damage_dealt']
-    attacker: typing.Optional[objects.Object] = None
-    target: typing.Optional[objects.Object] = None
+    attacker: typing.Optional[objects.Objects] = None
+    target: typing.Optional[objects.Objects] = None
     minimum: typing.Optional[int] = None
     maximum: typing.Optional[int] = None
 
@@ -53,6 +53,7 @@ class ConditionalTrigger(base.BaseModel):
 
 Event = Union[
     Literal[summon],
+    Literal[death],
     EndOfNTurnsFromNow,
     StartOfTurn,
     EndOfTurn,

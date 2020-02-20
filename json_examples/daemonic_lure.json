@@ -1,0 +1,35 @@
+{
+  "name": "Daemonic Lure",
+  "cost": 0,
+  "type": "spell",
+  "effects": [
+    {
+      "name": "set_var_object",
+      "var": "target",
+      "value": {
+        "name": "choose_card",
+        "owner": "opponent",
+        "types": "minion"
+      }
+    },
+    {
+      "name": "deal_damage",
+      "amount": 1,
+      "target": {
+        "name": "get_var_object",
+        "var": "target"
+      }
+    },
+    {
+      "name": "move_unit",
+      "unit": {
+        "name": "get_var_object",
+        "var": "target"
+      },
+      "location": {
+        "name": "choose_location",
+        "choose_from": "walkable"
+      }
+    }
+  ]
+}

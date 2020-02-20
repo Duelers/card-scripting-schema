@@ -1,0 +1,65 @@
+{
+  "name": "Juxtaposition",
+  "cost": 0,
+  "type": "spell",
+  "effects": [
+    {
+      "name": "set_var_object",
+      "var": "minion_a",
+      "value": {
+        "name": "choose_unit"
+      }
+    },
+    {
+      "name": "set_var_object",
+      "var": "minion_b",
+      "value": {
+        "name": "choose_unit"
+      }
+    },
+    {
+      "name": "set_var_location",
+      "var": "minion_a_loc",
+      "value": {
+        "name": "location_from_unit",
+        "unit": {
+          "name": "get_var_object",
+          "var": "minion_a"
+        }
+      }
+    },
+    {
+      "name": "set_var_location",
+      "var": "minion_b_loc",
+      "value": {
+        "name": "location_from_unit",
+        "unit": {
+          "name": "get_var_object",
+          "var": "minion_b"
+        }
+      }
+    },
+    {
+      "name": "move_unit",
+      "unit": {
+        "name": "get_var_object",
+        "var": "minion_a"
+      },
+      "location": {
+        "name": "get_var_location",
+        "var": "minion_b_location"
+      }
+    },
+    {
+      "name": "move_unit",
+      "unit": {
+        "name": "get_var_object",
+        "var": "minion_b"
+      },
+      "location": {
+        "name": "get_var_location",
+        "var": "minion_a_location"
+      }
+    }
+  ]
+}

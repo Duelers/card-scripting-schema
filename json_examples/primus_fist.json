@@ -12,7 +12,7 @@
       "effects": {
         "name": "change_property",
         "property_owner": {
-          "name": "choose_cards",
+          "name": "choose_unit",
           "owner": "you"
         },
         "property": "attack",

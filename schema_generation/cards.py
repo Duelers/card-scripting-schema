@@ -1,7 +1,5 @@
 import typing
 
-import pydantic
-
 import card_types
 import factions
 import base
@@ -34,7 +32,7 @@ class SpellCard(CardModel):
     ]
 
 
-class ArifactCard(CardModel):
+class ArtifactCard(CardModel):
     type: typing.Literal[card_types.artifact]
     abilities: typing.Union[
         _abilities.Ability,
@@ -42,7 +40,7 @@ class ArifactCard(CardModel):
     ]
 
 
-Card = typing.Union[SpellCard, MinionCard, ArifactCard]
+Card = typing.Union[SpellCard, MinionCard, ArtifactCard]
 
 
 class CardRoot(base.BaseModel):

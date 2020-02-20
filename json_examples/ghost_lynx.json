@@ -1,0 +1,26 @@
+{
+  "name": "Ghost Lynx",
+  "cost": 2,
+  "type": "minion",
+  "attack": 2,
+  "max_health": 1,
+  "abilities": {
+    "name": "triggered_effects",
+    "trigger": "summon",
+    "effects": {
+      "name": "move_unit",
+      "unit": {
+        "name": "choose_unit",
+        "types": "minion",
+        "from_squares": {
+          "name": "adjacent_to_location",
+          "location": "this"
+        }
+      },
+      "location": {
+        "name": "choose_random",
+        "choose_from": "walkable"
+      }
+    }
+  }
+}

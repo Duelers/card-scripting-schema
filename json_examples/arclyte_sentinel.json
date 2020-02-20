@@ -14,7 +14,7 @@
           "name": "set_var_object",
           "var": "target",
           "value": {
-            "name": "choose_cards",
+            "name": "choose_unit",
             "owner": "you"
           }
         },

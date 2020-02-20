@@ -1,0 +1,17 @@
+{
+  "name": "Crystal Wisp",
+  "cost": 2,
+  "type": "minion",
+  "attack": 1,
+  "max_health": 1,
+  "abilities": {
+    "name": "triggered_effects",
+    "trigger": "death",
+    "effects": {
+      "name": "change_property",
+      "property_owner": "your_general",
+      "property": "max_mana",
+      "by_value": 1
+    }
+  }
+}
