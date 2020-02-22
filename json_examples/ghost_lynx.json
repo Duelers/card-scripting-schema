@@ -12,7 +12,7 @@
       "unit": {
         "name": "choose_unit",
         "types": "minion",
-        "from_squares": {
+        "from_cells": {
           "name": "adjacent_to_location",
           "location": "this"
         }

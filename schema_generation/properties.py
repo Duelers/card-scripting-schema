@@ -72,22 +72,47 @@ ArtifactProperty = typing.Union[
     typing.Literal[abilities]
 ]
 
-Property = typing.Union[MinionProperty, GeneralProperty, UnitProperty,
-                        SpellProperty, ArtifactProperty, DamageDealtProperty]
+Property = typing.Union[MinionProperty,
+                        GeneralProperty,
+                        UnitProperty,
+                        SpellProperty,
+                        ArtifactProperty,
+                        DamageDealtProperty]
 
-
-class GetPropertyModel(base.BaseModel):
-    """Modify a property of an object."""
-    name: typing.Literal['change_property']
-    property_owner: objects.Objects = 'this'
-
-
-class GetProperty(base.BaseModel):
-    """Modify a property of an object."""
-    property: Property
+# class GetPropertyModel(base.BaseModel):
+#     """Modify a property of an object."""
+#     name: typing.Literal['change_property']
+#     property_owner: objects.Objects = objects.this
+#
+# class GetProperty(base.BaseModel):
+#     """Modify a property of an object."""
+#     property: Property
 
 
 PropertyOwnerType = typing.TypeVar('PropertyOwnerType')
 PropertyType = typing.TypeVar('PropertyType')
 
-Number = typing.Union[GetProperty, GetVarNumber, int]
+import object_types
+
+property_key = 'property'
+object_types.UnitType[property_key] = UnitProperty
+object_types.MinionType[property_key] = MinionProperty
+object_types.GeneralType[property_key] = GeneralProperty
+object_types.SpellType[property_key] = SpellProperty
+object_types.ArtifactType[property_key] = ArtifactProperty
+
+
+def make_get_property(object_type: object_types.ObjectType):
+    model = object_types.make_typed_model(object_type,
+                                          name='GetProperty',
+                                          property_owner=(object_type[objects.object_key], objects.this),
+                                          property=(object_type[property_key], ...))
+    return model
+
+
+Number = typing.Union[make_get_property(object_types.MinionType),
+                      make_get_property(object_types.GeneralType),
+                      make_get_property(object_types.SpellType),
+                      make_get_property(object_types.ArtifactType),
+                      GetVarNumber,
+                      int]

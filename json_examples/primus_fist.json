@@ -13,7 +13,11 @@
         "name": "change_property",
         "property_owner": {
           "name": "choose_unit",
-          "owner": "you"
+          "owner": "you",
+          "from_cells": {
+            "name": "adjacent_to_location",
+            "location": "this"
+          }
         },
         "property": "attack",
         "operator": "+",

@@ -60,12 +60,12 @@ class UnitSelectionModel(base.BaseModel):
     ] = card_types.minion
 
     owner: typing.Optional[players.Player] = None
-    from_squares: locations.Locations = "everywhere"  # todo this is terrible. Should be locations.everywhere but I
+    from_cells: locations.Locations = "everywhere"  # todo this is terrible. Should be locations.everywhere but I
     # can't figure out how to import that without a circular dependency.
 
 
-class ChooseUnit(UnitSelectionModel):
-    name: typing.Literal['choose_unit']
+# class ChooseUnit(UnitSelectionModel):
+#     name: typing.Literal['choose_unit']
 
 
 class GetVarObject(base.BaseModel):
@@ -73,15 +73,50 @@ class GetVarObject(base.BaseModel):
     var: str
 
 
-Minion = typing.Union[typing.Literal[this], ChooseCard, ChooseUnit, GetVarObject]  # todo type card selection methods
+import object_types
 
-General = typing.Union[generals.Generals, typing.Literal[this], ChooseCard, ChooseUnit, GetVarObject]  # todo
 
-Spell = typing.Union[typing.Literal[this], ChooseCard, GetVarObject]  # todo
+def make_choose_unit(object_type: object_types.ObjectType):
+    model = object_types.make_typed_model(object_type,
+                                          name='ChooseUnit',
+                                          owner=(typing.Optional[players.Player], None),
+                                          from_cells=('locations.Locations', "everywhere")
+                                          )
+    model.__module__ = __name__
+    return model
 
-Artifact = typing.Union[typing.Literal[this], ChooseCard, GetVarObject]  # todo
 
-Unit = typing.Union[generals.Generals, typing.Literal[this], ChooseCard, ChooseUnit, GetVarObject]  # todo
+choose_minion = make_choose_unit(object_types.MinionType)
+
+Minion = typing.Union[typing.Literal[this],
+                      ChooseCard,
+                      choose_minion,
+                      GetVarObject]  # todo type
+
+choose_general = make_choose_unit(object_types.GeneralType)
+
+General = typing.Union[generals.Generals,
+                       typing.Literal[this],
+                       ChooseCard,
+                       choose_general,
+                       GetVarObject]  # todo
+
+choose_unit = make_choose_unit(object_types.UnitType)
+
+Unit = typing.Union[generals.Generals,
+                    typing.Literal[this],
+                    ChooseCard,
+                    choose_unit,
+                    GetVarObject]  # todo
+
+Spell = typing.Union[typing.Literal[this],
+                     ChooseCard,
+                     GetVarObject]  # todo
+
+Artifact = typing.Union[typing.Literal[this],
+                        ChooseCard,
+                        GetVarObject]  # todo
+
 Units = typing.Union[Unit, ChooseCards]
 
 Object = typing.Union[typing.Literal[this],
@@ -101,7 +136,25 @@ Objects = typing.Union[
 
 import locations
 
-ChooseUnit.update_forward_refs()
+choose_unit.update_forward_refs()
+choose_general.update_forward_refs()
+choose_minion.update_forward_refs()
 
 # clsmembers = inspect.getmembers(sys.modules[__name__], inspect.isclass)
 # print(clsmembers)
+
+
+object_key = 'object'
+object_types.UnitType[object_key] = Unit
+object_types.MinionType[object_key] = Minion
+object_types.GeneralType[object_key] = General
+object_types.SpellType[object_key] = Spell
+object_types.ArtifactType[object_key] = Artifact
+#
+# objects_key = 'objects'
+# UnitType[objects_key] = objects.Units
+# MinionType[objects_key] = objects.Minions
+# GeneralType[objects_key] = objects.Generals
+# SpellType[objects_key] = objects.Spells
+# ArtifactType[objects_key] = objects.Artifacts
+#
