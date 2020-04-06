@@ -2,8 +2,8 @@ from setuptools import setup
 
 setup(
     name='cardboard_card_scripting',
-    version='0.1.3',
-    packages=[''],
+    version='0.1.4',
+    packages=['card_models'],
     # package_dir={'card_model': 'schema_generation'},
     url='https://github.com/Duelers/card-scripting-schema',
     license='GNU GPLv3',
