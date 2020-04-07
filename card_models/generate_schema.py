@@ -1,6 +1,5 @@
-import base
-
-import cards
+from card_models import base
+from card_models import cards
 
 
 class CardContainer(base.BaseModel):
@@ -12,5 +11,5 @@ if __name__ == '__main__':
     schema_json = schema_root.schema_json(indent=2)
     file_name = 'duelers_schema'
     version = '0_1'
-    with open(f'../schema_exports/{file_name}_{version}.json', 'w+') as file:
+    with open(f'schema_exports/{file_name}_{version}.json', 'w+') as file:
         file.write(schema_json)

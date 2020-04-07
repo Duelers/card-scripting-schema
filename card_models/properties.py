@@ -1,7 +1,7 @@
 import typing
 
-import base
-import objects
+from card_models import base
+from card_models import objects
 
 damage = 'damage'
 DamageDealtProperty = typing.Union[
@@ -92,7 +92,7 @@ Property = typing.Union[MinionProperty,
 PropertyOwnerType = typing.TypeVar('PropertyOwnerType')
 PropertyType = typing.TypeVar('PropertyType')
 
-import object_types
+from card_models import object_types
 
 property_key = 'property'
 object_types.UnitType[property_key] = UnitProperty

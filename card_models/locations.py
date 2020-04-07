@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 import pydantic
-
-import base
 import typing
+
+from card_models import base
 
 # Location
 this = "this"
@@ -84,7 +84,7 @@ Locations = typing.Union[Location,
                          SubtractLocations
 ]
 
-import objects
+from card_models import objects
 
 LocationFromUnit.update_forward_refs()
 ChooseLocation.update_forward_refs()

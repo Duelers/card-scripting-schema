@@ -4,14 +4,15 @@ from typing import Union, Literal
 
 import typing
 
-import base
-import comparison
+from card_models import base
+from card_models import comparison
 
-import objects
-import players
+from card_models import objects
+from card_models import players
 
 summon = 'summon'  # Opening gambit. When this is played.
-death = 'death' # Dying wish
+death = 'death'  # Dying wish
+
 
 class EndOfNTurnsFromNow(base.BaseModel):
     name: typing.Literal['end_of_#_turns_from_now']

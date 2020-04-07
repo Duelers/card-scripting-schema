@@ -1,17 +1,16 @@
 from __future__ import annotations
 
-import numbers
 import typing
 from typing import Union
 
-import locations
-import objects
-import players
-import base
+from card_models import locations
+from card_models import objects
+from card_models import players
+from card_models import base
 
-import properties
-import operators
-import events
+from card_models import properties
+from card_models import operators
+from card_models import events
 
 
 class EffectModel(base.BaseModel):
@@ -95,6 +94,6 @@ class AddAbility(DurationEffectModel):
 DurationEffect = Union[ChangeProperty, AddAbility]
 Effect = Union[InstantaneousEffect, DurationEffect]
 
-import abilities
+from card_models import abilities
 
 AddAbility.update_forward_refs()

@@ -4,7 +4,7 @@ import typing
 import inflection
 import pydantic
 
-import objects
+from card_models import objects
 
 
 @dataclasses.dataclass

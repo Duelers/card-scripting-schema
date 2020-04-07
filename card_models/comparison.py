@@ -1,8 +1,8 @@
 import typing
 
-import operators
-import properties
-import base
+from card_models import operators
+from card_models import properties
+from card_models import base
 
 
 class Comparison(base.BaseModel):

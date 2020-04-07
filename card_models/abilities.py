@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import typing
 
-import events
-import base
+from card_models import events
+from card_models import base
 
 airdrop = 'airdrop'
 
@@ -34,7 +34,7 @@ Ability = typing.Union[TriggeredEffects,
                        ContinuousEffect,
                        typing.Literal[airdrop]]
 
-import effects
+from card_models  import effects
 
 TriggeredEffects.update_forward_refs()
 ContinuousEffect.update_forward_refs()

@@ -2,12 +2,11 @@ from __future__ import annotations
 
 import typing
 
-import card_types
-import generals
-import players
-import base
-
-import zones
+from card_models import card_types
+from card_models import generals
+from card_models import players
+from card_models import base
+from card_models import zones
 
 this = "this"
 trigger = "trigger"  # The event which causes a triggered effect
@@ -73,7 +72,7 @@ class GetVarObject(base.BaseModel):
     var: str
 
 
-import object_types
+from card_models import object_types
 
 
 def make_choose_unit(object_type: object_types.ObjectType):
@@ -134,7 +133,7 @@ Objects = typing.Union[
     AllCards,
 ]
 
-import locations
+from card_models import locations
 
 choose_unit.update_forward_refs()
 choose_general.update_forward_refs()

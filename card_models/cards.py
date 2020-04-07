@@ -2,11 +2,11 @@ import typing
 
 import pydantic
 
-import card_types
-import factions
-import base
-import abilities as _abilities
-import effects as _effects
+from card_models import card_types
+from card_models import factions
+from card_models import base
+from card_models import abilities as _abilities
+from card_models import effects as _effects
 
 
 class CardModel(base.BaseModel):
