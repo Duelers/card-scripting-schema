@@ -12,12 +12,12 @@ from card_models import effects as _effects
 class CardModel(base.BaseModel):
     name: str
     faction: factions.Faction = factions.neutral
+    instance_id: typing.Optional[int] = None  # Used to keep cards unique in the gamestate.
 
 
 class Castable(pydantic.BaseModel):
     cost: pydantic.conint(ge=0)
-    copy_id: typing.Optional[int] = None # id added when deck is created such that no card with the same name in a
-    # deck has the same id
+
 
 class Unit(CardModel):
     attack: pydantic.conint(ge=0)
