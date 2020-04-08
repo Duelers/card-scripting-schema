@@ -12,7 +12,6 @@ from card_models import effects as _effects
 class CardModel(base.BaseModel):
     name: str
     faction: factions.Faction = factions.neutral
-    instance_id: typing.Optional[int] = None  # Used to keep cards unique in the gamestate.
 
 
 class Castable(pydantic.BaseModel):
